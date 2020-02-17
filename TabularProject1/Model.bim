@@ -93,6 +93,12 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "# Account",
+            "expression": " DISTINCTCOUNT(DimAccount[AccountKey])"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -465,6 +471,15 @@
               "query": " SELECT [dbo].[FactFinance].* FROM [dbo].[FactFinance] ",
               "dataSource": "AdventureWorks"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Amount",
+            "expression": [
+              " SUM(FactFinance[Amount])",
+              ""
+            ]
           }
         ],
         "annotations": [
