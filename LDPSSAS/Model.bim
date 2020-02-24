@@ -1,0 +1,758 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=DESKTOP-9TMIEK9\\ROSHANSQL;Initial Catalog=ProductSales;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateAccount",
+        "account": "DESKTOP-9TMIEK9\\ROSHA",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Dim Account",
+        "columns": [
+          {
+            "name": "Account ID",
+            "dataType": "int64",
+            "sourceColumn": "Account ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Account SubSegment ID",
+            "dataType": "int64",
+            "sourceColumn": "Account SubSegment ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Account Subsidiary ID",
+            "dataType": "int64",
+            "sourceColumn": "Account Subsidiary ID",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAccount",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimAccount].* FROM [dbo].[DimAccount] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimAccount].* FROM [dbo].[DimAccount] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimAccount"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim Date",
+        "columns": [
+          {
+            "name": "CalendarDate",
+            "dataType": "dateTime",
+            "sourceColumn": "CalendarDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "FiscalMonth ID",
+            "dataType": "double",
+            "sourceColumn": "FiscalMonth ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "string",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FiscalQuarter ID",
+            "dataType": "double",
+            "sourceColumn": "FiscalQuarter ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "string",
+            "sourceColumn": "FiscalQuarter",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FiscalYear ID",
+            "dataType": "double",
+            "sourceColumn": "FiscalYear ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "string",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Date ID",
+            "dataType": "double",
+            "sourceColumn": "Date ID",
+            "sourceProviderType": "Double"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimDate].* FROM [dbo].[DimDate] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimDate].* FROM [dbo].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim Product",
+        "columns": [
+          {
+            "name": "Product ID",
+            "dataType": "int64",
+            "sourceColumn": "Product ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ProductFamily ID",
+            "dataType": "double",
+            "sourceColumn": "ProductFamily ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "ProductFamily",
+            "dataType": "string",
+            "sourceColumn": "ProductFamily",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ProductUnit ID",
+            "dataType": "double",
+            "sourceColumn": "ProductUnit ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "ProductUnit",
+            "dataType": "string",
+            "sourceColumn": "ProductUnit",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "BusinessUnit ID",
+            "dataType": "double",
+            "sourceColumn": "BusinessUnit ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ProductDivision ID",
+            "dataType": "double",
+            "sourceColumn": "ProductDivision ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "ProductDivision",
+            "dataType": "string",
+            "sourceColumn": "ProductDivision",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SuperDivision ID",
+            "dataType": "double",
+            "sourceColumn": "SuperDivision ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SuperDivision",
+            "dataType": "string",
+            "sourceColumn": "SuperDivision",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "RevSumCategory ID",
+            "dataType": "double",
+            "sourceColumn": "RevSumCategory ID",
+            "sourceProviderType": "Double"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProduct",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimProduct].* FROM [dbo].[DimProduct] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Product Hierarchy",
+            "levels": [
+              {
+                "name": "ProductFamily",
+                "ordinal": 1,
+                "column": "ProductFamily"
+              },
+              {
+                "name": "ProductUnit",
+                "ordinal": 0,
+                "column": "ProductUnit"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimProduct].* FROM [dbo].[DimProduct] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimProduct"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim Segment",
+        "columns": [
+          {
+            "name": "SummarySegment ID",
+            "dataType": "double",
+            "sourceColumn": "SummarySegment ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Segment ID",
+            "dataType": "double",
+            "sourceColumn": "Segment ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SubSegment ID",
+            "dataType": "int64",
+            "sourceColumn": "SubSegment ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SummarySegment",
+            "dataType": "string",
+            "sourceColumn": "SummarySegment",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Subsegment",
+            "dataType": "string",
+            "sourceColumn": "Subsegment",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimSegment",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimSegment].* FROM [dbo].[DimSegment] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Segment Hiearchy",
+            "levels": [
+              {
+                "name": "SummarySegment",
+                "ordinal": 0,
+                "column": "SummarySegment"
+              },
+              {
+                "name": "Segment",
+                "ordinal": 1,
+                "column": "Segment"
+              },
+              {
+                "name": "Subsegment",
+                "ordinal": 2,
+                "column": "Subsegment"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimSegment].* FROM [dbo].[DimSegment] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimSegment"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim Subsidiary",
+        "columns": [
+          {
+            "name": "Subsidiary ID",
+            "dataType": "int64",
+            "sourceColumn": "Subsidiary ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Area",
+            "dataType": "string",
+            "sourceColumn": "Area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SubRegion",
+            "dataType": "string",
+            "sourceColumn": "SubRegion",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimSubsidiary",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimSubsidiary].* FROM [dbo].[DimSubsidiary] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Area Hierarchy",
+            "levels": [
+              {
+                "name": "Area",
+                "ordinal": 0,
+                "column": "Area"
+              },
+              {
+                "name": "Region",
+                "ordinal": 1,
+                "column": "Region"
+              },
+              {
+                "name": "SubRegion",
+                "ordinal": 2,
+                "column": "SubRegion"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimSubsidiary].* FROM [dbo].[DimSubsidiary] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimSubsidiary"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim UserSubsidiary",
+        "columns": [
+          {
+            "name": "User ID",
+            "dataType": "double",
+            "sourceColumn": "User ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "UserAlias",
+            "dataType": "string",
+            "sourceColumn": "UserAlias",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Subsidiary ID",
+            "dataType": "int64",
+            "sourceColumn": "Subsidiary ID",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimUserSubsidiary",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimUserSubsidiary].* FROM [dbo].[DimUserSubsidiary] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimUserSubsidiary].* FROM [dbo].[DimUserSubsidiary] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimUserSubsidiary"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Fact Budget",
+        "columns": [
+          {
+            "name": "Budget Subsidiary ID",
+            "dataType": "int64",
+            "sourceColumn": "Budget Subsidiary ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Budget SubSegment ID",
+            "dataType": "int64",
+            "sourceColumn": "Budget SubSegment ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Budget Date ID",
+            "dataType": "double",
+            "sourceColumn": "Budget Date ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Budget Product ID",
+            "dataType": "int64",
+            "sourceColumn": "Budget Product ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Budget",
+            "dataType": "double",
+            "sourceColumn": "Budget",
+            "sourceProviderType": "Double"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactBudget",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[FactBudget].* FROM [dbo].[FactBudget] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[FactBudget].* FROM [dbo].[FactBudget] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactBudget"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Fact Sales",
+        "columns": [
+          {
+            "name": "Sales Account ID",
+            "dataType": "int64",
+            "sourceColumn": "Sales Account ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Sales Product ID",
+            "dataType": "int64",
+            "sourceColumn": "Sales Product ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "string",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FiscalMonth ID",
+            "dataType": "double",
+            "sourceColumn": "FiscalMonth ID",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Sales Date ID",
+            "dataType": "double",
+            "sourceColumn": "Sales Date ID",
+            "sourceProviderType": "Double"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactSales",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] ",
+              "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactSales"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "b1a9ad19-51e7-4271-80a0-0aaa66d4c09c",
+        "fromTable": "Fact Sales",
+        "fromColumn": "Sales Account ID",
+        "toTable": "Dim Account",
+        "toColumn": "Account ID"
+      },
+      {
+        "name": "a13a8cee-54a3-4890-b74b-4dbfcd73dd38",
+        "fromTable": "Fact Sales",
+        "fromColumn": "Sales Product ID",
+        "toTable": "Dim Product",
+        "toColumn": "Product ID"
+      },
+      {
+        "name": "3e27bde6-9067-451c-b38b-27d03d03088a",
+        "fromTable": "Fact Sales",
+        "fromColumn": "Sales Date ID",
+        "toTable": "Dim Date",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "f6f3b2b0-b92b-4c61-949f-9ae3622d833e",
+        "fromTable": "Fact Budget",
+        "fromColumn": "Budget Date ID",
+        "toTable": "Dim Date",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "8091f121-1b68-43be-bba7-5127300701af",
+        "fromTable": "Fact Budget",
+        "fromColumn": "Budget Product ID",
+        "toTable": "Dim Product",
+        "toColumn": "Product ID"
+      },
+      {
+        "name": "4ead7d73-1952-430e-9fd0-edbadbbcb4d0",
+        "fromTable": "Fact Budget",
+        "fromColumn": "Budget SubSegment ID",
+        "toTable": "Dim Subsidiary",
+        "toColumn": "Subsidiary ID"
+      },
+      {
+        "name": "e709b835-ff69-4435-b12a-c0de665dbe2f",
+        "fromTable": "Fact Budget",
+        "fromColumn": "Budget SubSegment ID",
+        "toTable": "Dim Segment",
+        "toColumn": "SubSegment ID"
+      },
+      {
+        "name": "e884efbb-61fe-4213-a5f3-4a220fd8497e",
+        "fromTable": "Dim Account",
+        "fromColumn": "Account Subsidiary ID",
+        "toTable": "Dim Subsidiary",
+        "toColumn": "Subsidiary ID"
+      },
+      {
+        "name": "115b2255-991e-49d3-a269-f96f3b6fe5a3",
+        "fromTable": "Dim Account",
+        "fromColumn": "Account SubSegment ID",
+        "toTable": "Dim Segment",
+        "toColumn": "SubSegment ID"
+      },
+      {
+        "name": "a2eb5d49-65c0-4934-93b5-3d30dc56b7ee",
+        "fromTable": "Dim UserSubsidiary",
+        "fromColumn": "Subsidiary ID",
+        "toTable": "Dim Subsidiary",
+        "toColumn": "Subsidiary ID"
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "Accounts Department",
+        "tables": [
+          {
+            "name": "Dim Account",
+            "columns": [
+              {
+                "name": "Account ID"
+              },
+              {
+                "name": "Account SubSegment ID"
+              },
+              {
+                "name": "Account Subsidiary ID"
+              }
+            ]
+          },
+          {
+            "name": "Dim Segment",
+            "columns": [
+              {
+                "name": "Segment"
+              },
+              {
+                "name": "Segment ID"
+              },
+              {
+                "name": "Subsegment"
+              },
+              {
+                "name": "SubSegment ID"
+              },
+              {
+                "name": "SummarySegment"
+              },
+              {
+                "name": "SummarySegment ID"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Segment Hiearchy"
+              }
+            ]
+          },
+          {
+            "name": "Fact Sales",
+            "columns": [
+              {
+                "name": "FiscalMonth ID"
+              },
+              {
+                "name": "FiscalYear"
+              },
+              {
+                "name": "Revenue"
+              },
+              {
+                "name": "Sales Account ID"
+              },
+              {
+                "name": "Sales Date ID"
+              },
+              {
+                "name": "Sales Product ID"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

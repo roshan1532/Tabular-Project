@@ -7,6 +7,8 @@ Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "TabularProject1", "TabularP
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MultidimensionalProject1", "..\MultidimensionalProject1\MultidimensionalProject1\MultidimensionalProject1.dwproj", "{A286B3B7-3539-4E3A-8E4D-6F3518D02952}"
 EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "LDPSSAS", "LDPSSAS\LDPSSAS.smproj", "{B8DBD744-9712-441B-A78E-DE42D01FB0F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|x86 = Development|x86
@@ -18,6 +20,9 @@ Global
 		{A286B3B7-3539-4E3A-8E4D-6F3518D02952}.Development|x86.ActiveCfg = Development
 		{A286B3B7-3539-4E3A-8E4D-6F3518D02952}.Development|x86.Build.0 = Development
 		{A286B3B7-3539-4E3A-8E4D-6F3518D02952}.Development|x86.Deploy.0 = Development
+		{B8DBD744-9712-441B-A78E-DE42D01FB0F7}.Development|x86.ActiveCfg = Development|x86
+		{B8DBD744-9712-441B-A78E-DE42D01FB0F7}.Development|x86.Build.0 = Development|x86
+		{B8DBD744-9712-441B-A78E-DE42D01FB0F7}.Development|x86.Deploy.0 = Development|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
