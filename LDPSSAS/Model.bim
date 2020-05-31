@@ -51,6 +51,12 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "# Accounts",
+            "expression": "DISTINCTCOUNT('Dim Account'[Account ID])"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -219,6 +225,13 @@
             "dataType": "double",
             "sourceColumn": "RevSumCategory ID",
             "sourceProviderType": "Double"
+          },
+          {
+            "type": "calculated",
+            "name": "Full Prodct",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE('Dim Product'[ProductFamily],'Dim Product'[ProductUnit])"
           }
         ],
         "partitions": [
@@ -521,6 +534,52 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "Estimated Budget",
+            "expression": " SUM('Fact Budget'[Budget])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Budget",
+            "expression": " TOTALYTD(SUM('Fact Budget'[Budget]), 'Dim Date'[CalendarDate])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Budget",
+            "expression": " TOTALQTD(SUM('Fact Budget'[Budget]), 'Dim Date'[CalendarDate])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Budget",
+            "expression": " TOTALMTD(SUM('Fact Budget'[Budget]), 'Dim Date'[CalendarDate])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -585,6 +644,85 @@
               "query": " SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] ",
               "dataSource": "SqlServer DESKTOP-9TMIEK9ROSHANSQL ProductSales"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Actual Revenue",
+            "expression": " SUM('Fact Sales'[Revenue])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Revenue",
+            "expression": " TOTALYTD(SUM('Fact Sales'[Revenue]), 'Dim Date'[CalendarDate])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "kpi": {
+              "targetExpression": "'Fact Sales'[YTD Previous Revenue]",
+              "targetFormatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Fact Sales'[YTD Revenue]/'Fact Sales'[_YTD Revenue Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.2,-1,",
+                "\t                If(x<0.7,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "20"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "70"
+                }
+              ]
+            },
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Previous Revenue",
+            "expression": " CALCULATE([YTD Revenue],SAMEPERIODLASTYEAR('Dim Date'[CalendarDate]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
